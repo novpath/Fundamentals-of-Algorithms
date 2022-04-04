@@ -1,6 +1,6 @@
 /*
-Algorithmic Thinking！！Divide and Conquer 
-1.Determine the pivot: q[l]、q[(l+r)/2]、q[random];
+Algorithmic Thinking--Divide and Conquer 
+1.Determine the pivot: q[l], q[(l+r)/2], q[random];
 2.Adjust section:The left section less than x, and the right section larger than x; 
 3.Deal with the left section and right section by recursion;
 
