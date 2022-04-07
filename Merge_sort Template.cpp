@@ -4,8 +4,8 @@ Algorithmic Thinking--Divide and Conquer
 2.Recursive sorting the left and right sequence;
 3.Merging the two sections.<key step>
 
-Time complexity£ºAverage--O(nlogn)  Worst--O(n^2)
-Space complexity£ºO(n) 
+Time complexity:Average--O(nlogn)  Worst--O(n^2)
+Space complexity:O(n) 
 Stability of Sorting Algorithms:Stable
 */
 #include<iostream>
@@ -44,7 +44,11 @@ int main()
 	
 	merge_sort(q, 0, n - 1);
 	
-	for(int i = 0; i < n; i++) printf("%d", q[i]);
+	for(int i = 0; i < n; i++) {
+		printf("%d", q[i]);
+		if(i < n - 1)
+		printf(" ");
+	}
 	
 	return 0;
 }

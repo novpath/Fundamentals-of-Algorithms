@@ -21,8 +21,8 @@ Method 2:
   The right pointer 'j' move while the q[j] > x;
 3.Swap q[i], q[j];
 
-Time complexity£ºAverage--O(nlogn)  Worst--O(n^2)
-Space complexity£ºO(1) 
+Time complexity:Average--O(nlogn)  Worst--O(n^2)
+Space complexity:O(1) 
 Stability of Sorting Algorithms:Unstable
 */
 #include<iostream>
@@ -34,19 +34,25 @@ const int N = 1e6 + 10;
 int n;
 int q[N];
 
-void quick_sort(int q[], int l, int r){
-	if(l >= r) return ;
-	
-	int i = l - 1, j = r + 1, x = q[l + r >> 1];
-	while(i < j){
-		while(q[ ++ i] < x);
-	    while(q[ -- j] > x);
-		if(i < j) swap(q[i], q[j]);
+void quick_sort(int q[], int left, int right){
+	int i, j, temp, pivot;
+	if(left > right) return;
+	pivot = q[left];
+	i = left;
+	j = right;
+	while(i < j){                              //one time partition
+		while(i < j && q[j] >= pivot) j--;
+		while(i < j && q[i] <= pivot) i++;
+		if(i < j) swap(q[i], q[j]);            // if the i pointer doesn't meet the j pointer, swap.
 	}
 	
-	quick_sort(q, l, j);
-	quick_sort(q, j + 1, r);
+	q[left] = q[i];                            //After partition, resets the base number. 
+	q[i] = pivot;
+	
+	quick_sort(q, left, i - 1);
+	quick_sort(q, i + 1, right);
 }
+
 int main(){
 	
 	scanf("%d", &n);
@@ -54,7 +60,11 @@ int main(){
 	
 	quick_sort(q, 0, n - 1);
 	
-	for(int i = 0; i < n; i++) printf("%d", q[i]);
+	for(int i = 0; i < n; i++) {
+		printf("%d", q[i]);
+		if(i < n - 1)
+		printf(" ");
+	}
 	
 	return 0;
 } 
