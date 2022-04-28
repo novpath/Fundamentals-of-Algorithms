@@ -3,12 +3,10 @@ Algorithmic Thinking--Divide and Conquer
 1.Determine the pivot: q[l], q[(l+r)/2], q[random];
 2.Adjust section:The left section less than x, and the right section larger than x; <key step>
 3.Deal with the left section and right section by recursion;
-
 Algorithmic technique
 Firtly, understand the algorithmic thinking.
 secondly, remember the template for quickly complishing.
 Last, repeating code the template for 3-5 times.
-
 How to adjust section?
 Method 1:
 1.Create two array--a[], b[];
@@ -20,7 +18,6 @@ Method 2:
 2.The left pointer 'i' move while the q[i] < x;
   The right pointer 'j' move while the q[j] > x;
 3.Swap q[i], q[j];
-
 Time complexity:Average--O(nlogn)  Worst--O(n^2)
 Space complexity:O(1) 
 Stability of Sorting Algorithms:Unstable
@@ -35,7 +32,7 @@ int n;
 int q[N];
 
 void quick_sort(int q[], int left, int right){
-	int i, j, temp, pivot;
+	int i, j, pivot;
 	if(left > right) return;
 	pivot = q[left];
 	i = left;
@@ -68,5 +65,3 @@ int main(){
 	
 	return 0;
 } 
-
-
