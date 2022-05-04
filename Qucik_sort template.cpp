@@ -32,22 +32,17 @@ int n;
 int q[N];
 
 void quick_sort(int q[], int left, int right){
-	int i, j, pivot;
-	if(left > right) return;
-	pivot = q[left];
-	i = left;
-	j = right;
-	while(i < j){                              //one time partition
-		while(i < j && q[j] >= pivot) j--;
-		while(i < j && q[i] <= pivot) i++;
-		if(i < j) swap(q[i], q[j]);            // if the i pointer doesn't meet the j pointer, swap.
-	}
-	
-	q[left] = q[i];                            //After partition, resets the base number. 
-	q[i] = pivot;
-	
-	quick_sort(q, left, i - 1);
-	quick_sort(q, i + 1, right);
+    if(left >= right) return;
+    int i = left - 1, j = right + 1, pivot = q[i + j >> 1];
+    
+    while(i < j){
+        while(q[--j] > pivot);
+        while(q[++i] < pivot);
+        if(i < j) swap(q[i], q[j]);
+    }
+    
+    quick_sort(q, left, j);
+    quick_sort(q, j + 1, right);
 }
 
 int main(){
