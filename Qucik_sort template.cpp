@@ -36,8 +36,8 @@ void quick_sort(int q[], int left, int right){
     int i = left - 1, j = right + 1, pivot = q[i + j >> 1];
     
     while(i < j){
-        while(q[--j] > pivot);
-        while(q[++i] < pivot);
+        while(q[ -- j] > pivot);
+        while(q[ ++ i] < pivot);
         if(i < j) swap(q[i], q[j]);
     }
     
